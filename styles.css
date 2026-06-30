@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: white;
+}
+
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #5b5df5, #26c6da);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+} 
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+}
+
+header img {
+    height: 100%;
+}
+
+.pages {
+    display: flex;
+    gap: 30px;
+    margin-right: 70px;
+}
+
+.pages ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.pages a {
+    text-decoration: none;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 65px 100px 80px;
+}
+
+.main-text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+    gap: 20px;
+}
+
+.main-text h3 {
+    font-size: 60px;
+}
+
+.main-text p {
+    line-height: 2;
+}
+
+.main-signUp { 
+    width: 30%;
+    border: 3px solid aliceblue;
+    border-radius: 5px;
+    box-shadow: 3px 3px 40px black;
+    background-color: aliceblue;
+    padding: 40px 20px 40px 20px;
+}
+
+.main-signUp form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.main-signUp input {
+    border-radius: 10px;
+    border: 2px solid aliceblue;
+    color: black;
+    background-color: rgb(224, 223, 223);
+    padding: 15px;
+    width: 90%;
+}
+
+.main-signUp label {
+    color : black;
+    font-size: 25px;
+}
+
+input::placeholder {
+    color: rgba(128, 128, 128, 0.6);
+}
+
+
+
+#btnStart {
+    padding: 5px 20px 5px 20px;
+    background-color: transparent;
+    border: 1px solid aliceblue;
+}
+
+#btnStart:hover {
+    background-color: #2252b2;
+}
+
+#btnPricing {
+    background-color: rgb(84, 216, 84);
+    padding: 10px 30px 10px 30px;
+    border: 2px solid rgb(84, 216, 84);
+    border-radius: 20px;
+}
+
+#btnRegister {
+    width: 100%;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(40, 101, 223);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0);
+    padding: 10px 30px 10px 30px;
+    background-color: rgb(40, 101, 223);
+    transform: scale(0.8);
+}
+
+.errors {
+    width: 80%;
+    background: #ffe6e6;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.errors p {
+    color: red;
+    margin: 5px 0;
+}
+
+.valid {
+    width: 80%;
+    background: #9ee1a5;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.valid p {
+    color: rgb(95, 129, 81);
+    margin: 5px 0;
+}
