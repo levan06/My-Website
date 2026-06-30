@@ -130,13 +130,15 @@ if ( isset($_POST["register"]) && empty($errors) )
             <!-- Core of the Web Site -->
             <section class="main">
                 <div class="main-text">
-                    <h3>Fly makes you faster</h3>
+                    <h1>Don't be afraid to Think !</h1>
 
                     <p>
-                        New free template bu <a href="https://uicookies.com/">uicookies.com</a>. For more templates visit the <a href="https://www.wikipedia.org/">site</a>. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        “The world as we have created it is a process of our thinking. It cannot be changed 
+                        without changing our thinking.”
+                        <br>― <a href="https://en.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a>
                     </p>
 
-                    <button id="btnPricing">SEE PRICING</button>
+                    <button id="btnQuote">SEE QUOTES</button>
                 </div>
 
                 <!-- Sign Up Division -->
@@ -166,11 +168,10 @@ if ( isset($_POST["register"]) && empty($errors) )
                         <input name="type"     list="type"     placeholder="Type"      value="<?= htmlspecialchars( $_POST[ "type"  ] ?? '' ) ?>">
 
                         <datalist id="type" >
-                            <option value="BMW">
-                            <option value="Bentley">
-                            <option value="Mercedes">
-                            <option value="Audi">
-                            <option value="Volkswagen">
+                            <option value="Philosophy">
+                            <option value="Science">
+                            <option value="Logic">
+                            <option value="Engineering ">
                         </datalist>
 
                         <button name="register" id="btnRegister" type="submit">Register</button>
