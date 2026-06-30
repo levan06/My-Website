@@ -10,12 +10,23 @@ body {
     background: white;
 }
 
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .hero {
     min-height: 100vh;
     background: linear-gradient(120deg, #5b5df5, #26c6da);
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 } 
 
+
+/*=================*/
+/* Header Elements */
+/*=================*/
 header {
     display: flex;
     justify-content: space-between;
@@ -44,31 +55,11 @@ header {
     text-decoration: none;
 }
 
-.main {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 40px 65px 100px 80px;
-}
-
-.main-text {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items:start;
-    gap: 20px;
-}
-
-.main-text h1 {
-    font-size: 50px;
-}
-
-.main-text p {
-    line-height: 2;
-}
-
-.main-signUp { 
-    width: 38%;
+/*====================*/
+/* Login Box Elements */
+/*====================*/
+.login { 
+    width: 30%;
     border: 3px solid aliceblue;
     border-radius: 5px;
     box-shadow: 3px 3px 40px black;
@@ -76,7 +67,7 @@ header {
     padding: 40px 20px 40px 20px;
 }
 
-.main-signUp form {
+.login form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -84,7 +75,7 @@ header {
     width: 100%;
 }
 
-.main-signUp input {
+.login input {
     border-radius: 10px;
     border: 2px solid aliceblue;
     color: black;
@@ -93,7 +84,7 @@ header {
     width: 90%;
 }
 
-.main-signUp label {
+.login label {
     color : black;
     font-size: 25px;
 }
@@ -102,14 +93,7 @@ input::placeholder {
     color: rgba(128, 128, 128, 0.6);
 }
 
-#btnQuote {
-    background-color: rgb(84, 216, 84);
-    padding: 10px 30px 10px 30px;
-    border: 2px solid rgb(84, 216, 84);
-    border-radius: 20px;
-}
-
-#btnRegister {
+#btnLogin {
     width: 100%;
     font-size: 20px;
     border-radius: 20px;
@@ -120,14 +104,14 @@ input::placeholder {
     transform: scale(0.85);
 }
 
-#btnRegister:hover {
+#btnLogin:hover {
     cursor: pointer;
     background: linear-gradient(120deg, #5b5df5, #26c6da);
     transform: scale(0.9);
     transition: 0.3s;
 }
 
-.errors {
+.logErrors {
     width: 80%;
     background: #ffe6e6;
     border: 1px solid red;
@@ -135,7 +119,7 @@ input::placeholder {
     padding: 10px;
 }
 
-.errors p {
+.logErrors p {
     color: red;
     margin: 5px 0;
 }
@@ -150,13 +134,4 @@ input::placeholder {
 .valid p {
     color: rgb(95, 129, 81);
     margin: 5px 0;
-}
-
-form a {
-    margin-top: 20px;
-    color: rgb(84, 124, 223);
-}
-
-form a:hover {
-    color: rgb(17, 43, 109);
 }

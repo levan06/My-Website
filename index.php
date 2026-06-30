@@ -85,7 +85,8 @@ if ( isset($_POST["register"]) && empty($errors) )
                 [$name, $email, $passwordHash, $type]
             );
 
-            if (!$result) {
+            if (!$result)
+            {
                 $errors[] = "Unable to create the account.";
             }
         }
@@ -109,21 +110,21 @@ if ( isset($_POST["register"]) && empty($errors) )
 
             <!-- Header -->
             <header>
-                <img src="images/logo.png" alt="Logo">
+                <a href="index.php">
+                    <img class="logo" src="images/logo.png" alt="Logo">
+                </a>
 
                 <!-- Main elements of the header -->
                 <div class="pages">
                     <nav>
                         <ul>
-                            <li><a href="">Home</a></li>
+                            <li><a href="index.php">Home</a></li>
                             <li><a href="">Features</a></li>
                             <li><a href="">Reviews</a></li>
                             <li><a href="">Pricing</a></li>
                             <li><a href="">FAQ</a></li>
                         </ul>
                     </nav>
-
-                    <button id="btnStart">Get Started</button>
                 </div>
             </header>
 
@@ -165,16 +166,17 @@ if ( isset($_POST["register"]) && empty($errors) )
                         <input name="name"     type="text"     placeholder="Full name" value="<?= htmlspecialchars( $_POST[ "name"  ] ?? '' ) ?>">
                         <input name="email"    type="email"    placeholder="Email"     value="<?= htmlspecialchars( $_POST[ "email" ] ?? '' ) ?>">
                         <input name="password" type="password" placeholder="Password">
-                        <input name="type"     list="type"     placeholder="Type"      value="<?= htmlspecialchars( $_POST[ "type"  ] ?? '' ) ?>">
+                        <input name="type"     list="type"     placeholder="Career field"      value="<?= htmlspecialchars( $_POST[ "type"  ] ?? '' ) ?>">
 
                         <datalist id="type" >
-                            <option value="Philosophy">
-                            <option value="Science">
-                            <option value="Logic">
+                            <option value="Developer">
+                            <option value="DBA">
+                            <option value="Network administrator">
                             <option value="Engineering ">
                         </datalist>
 
                         <button name="register" id="btnRegister" type="submit">Register</button>
+                        <a href="login.php">Already have an account ?</a>
                     </form>
                 </div>
             </section>
