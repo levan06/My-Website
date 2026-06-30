@@ -27,7 +27,7 @@ if (isset($_POST["register"])) {
     {
         $errors[] = "Please Enter a password";
     }
-    else if( strlen( $password ) < 8 )
+    elseif( strlen( $password ) < 8 )
     {
         $errors[] = "Password must contain at least 8 characters";
     }
@@ -41,10 +41,10 @@ if ( isset($_POST["register"]) && empty($errors) )
 {
 
     /* Trying to connect to the DataBase */
-    $host        = "host=localhost";
-    $port        = "port=5432";
-    $dbname      = "dbname=myWebsite";
-    $credentials = "user=postgres password=Absoramo@2025";
+    $host        = "host="   . $_ENV["PGHOST"];
+    $port        = "port="   . $_ENV["PGPORT"];
+    $dbname      = "dbname=" . $_ENV["PGDATABASE"];
+    $credentials = " user="  . $_ENV["PGUSER"] . " password=" . $_ENV["PGPASSWORD"];
 
     $conn = pg_connect( "$host $port $dbname $credentials"  );
 
