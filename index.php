@@ -1,4 +1,15 @@
 <?php
+
+/* Verify if the usser isnt already connected */
+session_start();
+
+if ( isset( $_SESSION[ 'user_id' ] ) )
+{
+    header('Location: dashboard.php');
+    exit();
+}
+
+
 /* Managing succefull sing up */
 $success = isset( $_GET[ "registered" ] );
 
