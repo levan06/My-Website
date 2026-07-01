@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: white;
+}
+
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #5b5df5, #26c6da);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+
+/*=================*/
+/* Header Elements */
+/*=================*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+}
+
+.logo {
+    height: 180px;
+    width: fit-content;
+}
+
+.pages {
+    display: flex;
+    gap: 30px;
+    margin-right: 70px;
+}
+
+.pages ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.pages a {
+    text-decoration: none;
+}
+
+#btnLogout {
+    padding: 5px 20px 7px 20px;
+    margin-left: 30px;
+    border-radius: 30px;
+    background-color: rgb(207, 79, 79);
+    transform: scale(0.8);
+}
+
+#btnLogout:hover {
+    transform: scale(0.9);
+    background: linear-gradient(20deg, #e7a8a8, #da2626);
+    box-shadow: 0 5px 10px black;
+    cursor: pointer;
+}
+
+/*=================*/
+/*  Main Elements  */
+/*=================*/
+.welcome {
+    position: absolute;
+    right: 35%;
+    left: 35%;
+    text-align: center;
+    font-size: 35px;
+}
+
+.welcome span {
+    color:burlywood;
+    font-weight: bold;
+}
