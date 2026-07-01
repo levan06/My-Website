@@ -1,13 +1,9 @@
 <?php
 
 /* Verify if the usser isnt already connected */
-session_start();
+require_once "includes/auth.php";
 
-if ( isset( $_SESSION[ 'user_id' ] ) )
-{
-    header('Location: dashboard.php');
-    exit();
-}
+requireGuest();
 
 
 /* Managing succefull sing up */
@@ -54,64 +50,51 @@ if ( isset( $_POST["register"] ) ) {
 if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
 {
 
-    /* Trying to connect to the DataBase */
-    $host        = "host="   . $_ENV[ "PGHOST" ];
-    $port        = "port="   . $_ENV[ "PGPORT" ];
-    $dbname      = "dbname=" . $_ENV[ "PGDATABASE" ];
-    $credentials = " user="  . $_ENV[ "PGUSER" ] . " password=" . $_ENV[ "PGPASSWORD" ];
+    require_once "includes/db.php";
 
-    $conn = pg_connect( "$host $port $dbname $credentials"  );
+    /* Checking if the email is not already used */
+    $sqlCheckMail = "SELECT 1 from users where email = $1";
+    $mailResult   = pg_query_params( $conn, $sqlCheckMail, [$email] );
 
-    if (!$conn)
+    // Is the query valid
+    if ( !$mailResult )
     {
-        $errors[] = "Unable to connect to the database.";
+        $errors[] = "Unable to check if the email exists.";
     }
-    else // Connection valid
+    // The email is not unique
+    elseif( pg_num_rows( $mailResult ) > 0 )
     {
-        /* Checking if the email is not already used */
-        $sqlCheckMail = "SELECT 1 from users where email = $1";
-        $mailResult   = pg_query_params( $conn, $sqlCheckMail, [$email] );
+        $errors[] = "Email already exists.";
+    }
+    // Unique email
+    else 
+    {
+        /* Hashing the user's password */
+        $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
 
-        // Is the query valid
-        if ( !$mailResult )
-        {
-            $errors[] = "Unable to check if the email exists.";
-        }
-        // The email is not unique
-        elseif( pg_num_rows( $mailResult ) > 0 )
-        {
-            $errors[] = "Email already exists.";
-        }
-        // Unique email
-        else 
-        {
-            /* Hashing the user's password */
-            $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
-
-            /* Preparing the query */
-            $sql = "INSERT INTO users (name, email, password, type)
+        /* Preparing the query */
+        $sql = "INSERT INTO users (name, email, password, type)
                     VALUES ($1, $2, $3, $4)";
 
-            /* Checking if insert succeeded */
-            $result = pg_query_params(
-                $conn,
-                $sql,
-                [ $name, $email, $passwordHash, $type ]
-            );
+        /* Checking if insert succeeded */
+        $result = pg_query_params(
+            $conn,
+            $sql,
+            [ $name, $email, $passwordHash, $type ]
+        );
 
-            if (!$result)
-            {
-                $errors[] = "Unable to create the account.";
-            }
-            else
-            {
-                header( "Location: index.php?registered=1" );
-                exit();
-            }
+        if (!$result)
+        {
+            $errors[] = "Unable to create the account.";
         }
-
-        pg_close($conn);
+        else
+        {
+            header( "Location: index.php?registered=1" );
+            exit();
+        }
     }
+
+    pg_close($conn);
 }
 ?>
 
@@ -119,7 +102,7 @@ if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="styles.css">
+        <link type="text/css" rel="stylesheet" href="styles/styles.css">
         <title>Landing</title>
     </head>
 

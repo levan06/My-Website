@@ -2,13 +2,9 @@
 
 /* Verify if a sesion exist */
 /*   and compare its data   */
-session_start();
+require_once "includes/auth.php";
 
-if ( !isset( $_SESSION[ 'user_id' ] ) )
-{
-    header('Location: login.php');
-    exit();
-}
+requireLogin();
 
 ?>
 
@@ -17,7 +13,7 @@ if ( !isset( $_SESSION[ 'user_id' ] ) )
     <head>
         <meta charset="UTF-8">
         <title>Dashboard</title>
-        <link type="text/css" rel="stylesheet" href="dashboard.css">
+        <link type="text/css" rel="stylesheet" href="styles/dashboard.css">
     </head>
 
     <body>

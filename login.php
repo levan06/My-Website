@@ -1,13 +1,9 @@
 <?php
 
 /* Verify if the usser isnt already connected */
-session_start();
+require_once "includes/auth.php";
 
-if ( isset( $_SESSION[ 'user_id' ] ) )
-{
-    header('Location: dashboard.php');
-    exit();
-}
+requireGuest();
 
 
 $logErrors = [];
@@ -40,63 +36,50 @@ if (isset($_POST["login"]))
 /*-----------------------------*/
 if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
 {
-    /* Trying to connect to the DataBase */
-    $host        = "host="   . $_ENV["PGHOST"];
-    $port        = "port="   . $_ENV["PGPORT"];
-    $dbname      = "dbname=" . $_ENV["PGDATABASE"];
-    $credentials = " user="  . $_ENV["PGUSER"] . " password=" . $_ENV["PGPASSWORD"];
+    require_once "includes/db.php";
 
-    $conn = pg_connect( "$host $port $dbname $credentials"  );
-
-    if( !$conn )
-    {
-        $logErrors[] = "Unable to connect to the database. Please try again soon !";
-    }
-    else // Connection succeeded to DataBase
-    {
-        // Storing the query
-        $sql = "SELECT  * 
+    // Storing the query
+    $sql = "SELECT  * 
                 FROM    users 
                 WHERE   email = $1";
 
-        /* Checking if the quesry succeeded */
-        $result = pg_query_params( $conn, $sql, [ $email ] );
+    /* Checking if the quesry succeeded */
+    $result = pg_query_params( $conn, $sql, [ $email ] );
 
-        if (!$result)
+    if (!$result)
+    {
+        $logErrors[] = "Unable to Verify the account. Please try again soon !";
+    }
+    // User found in DataBase
+    else
+    {
+        /* Storing the result to verify it later */
+        $user = pg_fetch_assoc( $result );
+
+        if ( $user === false )
         {
-            $logErrors[] = "Unable to Verify the account. Please try again soon !";
+            $logErrors[] = "Incorrect email or password.";
         }
-        // User found in DataBase
+        // Verify if the password if valid
+        elseif ( !password_verify($password, $user["password"]) )
+        {
+            $logErrors[] = "Incorrect email or password.";
+        }
         else
         {
-            /* Storing the result to verify it later */
-            $user = pg_fetch_assoc( $result );
+            // Regenerate session ID to prevent session fixation attacks
+            session_regenerate_id(true);
 
-            if ( $user === false )
-            {
-                $logErrors[] = "Incorrect email or password.";
-            }
-            // Verify if the password if valid
-            elseif ( !password_verify($password, $user["password"]) )
-            {
-                $logErrors[] = "Incorrect email or password.";
-            }
-            else
-            {
-                // Regenerate session ID to prevent session fixation attacks
-                session_regenerate_id(true);
+            $_SESSION[ 'user_id' ] = $user[ "id"    ];
+            $_SESSION[ 'name'    ] = $user[ "name"  ];
+            $_SESSION[ 'email'   ] = $user[ "email" ];
 
-                $_SESSION[ 'user_id' ] = $user[ "id"    ];
-                $_SESSION[ 'name'    ] = $user[ "name"  ];
-                $_SESSION[ 'email'   ] = $user[ "email" ];
-
-                header( 'Location: dashboard.php' );
-                exit();
-            }   
-        }
+            header( 'Location: dashboard.php' );
+            exit();
+        } 
+    }
 
         pg_close($conn);
-    }
 }
 
 
@@ -106,7 +89,7 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="login.css">
+        <link type="text/css" rel="stylesheet" href="styles/login.css">
         <title>Login Page</title>
     </head>
 
