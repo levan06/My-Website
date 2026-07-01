@@ -162,12 +162,12 @@ if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
                                     <?php endforeach ?>
                                 </div>
                             <?php endif; ?>
+                        <?php endif; ?>
 
-                            <?php if ($success): ?>
+                        <?php if ($success): ?>
                                 <div class="valid">
                                     <p>Registration successful! You can now log in.</p>
                                 </div>
-                            <?php endif; ?>
                         <?php endif; ?>
 
                         <label>Sign Up For Free</label>
