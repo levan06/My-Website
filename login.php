@@ -83,8 +83,6 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
             }
             else
             {
-                session_start();
-                
                 // Regenerate session ID to prevent session fixation attacks
                 session_regenerate_id(true);
 
