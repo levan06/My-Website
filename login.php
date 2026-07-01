@@ -6,7 +6,7 @@ $logErrors = [];
 if (isset($_POST["login"])) 
 {
     $email    = trim( $_POST[ "email"    ] ?? "" );
-    $password = trim( $_POST[ "password" ] ?? "" );
+    $password =       $_POST[ "password" ] ?? "";
 
     // Checking the email
     if ($email === "") 
@@ -62,7 +62,7 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
             /* Storing the result to verify it later */
             $user = pg_fetch_assoc( $result );
 
-            if (!$user)
+            if ( $user === false )
             {
                 $logErrors[] = "Incorrect email or password.";
             }
@@ -71,6 +71,20 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
             {
                 $logErrors[] = "Incorrect email or password.";
             }
+            else
+            {
+                session_start();
+                
+                // Regenerate session ID to prevent session fixation attacks
+                session_regenerate_id(true);
+
+                $_SESSION[ 'user_id' ] = $user[ "id"    ];
+                $_SESSION[ 'name'    ] = $user[ "name"  ];
+                $_SESSION[ 'email'   ] = $user[ "email" ];
+
+                header( 'Location: dashboard.php' );
+                exit();
+            }   
         }
 
         pg_close($conn);
@@ -120,11 +134,6 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
                             <?php foreach( $logErrors as $error ): ?>
                                 <p><?= htmlspecialchars( $error ) ?></p>
                             <?php endforeach ?>
-                        </div>
-                            
-                    <?php else: ?>
-                        <div class="valid">
-                            <p><?= htmlspecialchars( "Registration Successful! Welcome to Abdo's Website." ) ?></p>
                         </div>
                     <?php endif ?>
                 <?php endif ?>
