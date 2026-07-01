@@ -90,6 +90,7 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
     <head>
         <meta charset="UTF-8">
         <link type="text/css" rel="stylesheet" href="styles/login.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
         <title>Login Page</title>
     </head>
 

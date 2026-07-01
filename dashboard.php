@@ -14,6 +14,7 @@ requireLogin();
         <meta charset="UTF-8">
         <title>Dashboard</title>
         <link type="text/css" rel="stylesheet" href="styles/dashboard.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     </head>
 
     <body>

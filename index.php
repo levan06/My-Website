@@ -103,6 +103,7 @@ if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
     <head>
         <meta charset="UTF-8">
         <link type="text/css" rel="stylesheet" href="styles/styles.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
         <title>Landing</title>
     </head>
 
