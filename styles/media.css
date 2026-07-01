@@ -1,0 +1,237 @@
+/*====================================================*/
+/*                RESPONSIVE DESIGN                    */
+/*====================================================*/
+/*
+    This file contains all responsive rules
+    shared between the different pages.
+
+    Breakpoints:
+        Desktop : > 992px
+        Tablet  : <= 992px
+        Phone   : <= 768px
+        Small   : <= 480px
+*/
+
+
+/*====================================================*/
+/*                     TABLETS                         */
+/*====================================================*/
+@media (max-width: 992px)
+{
+    /*--------------*/
+    /* Landing Page */
+    /*--------------*/
+
+    .main
+    {
+        flex-direction: column;
+        gap: 50px;
+        padding: 40px;
+    }
+
+    .main-text,
+    .main-signUp
+    {
+        width: 80%;
+        text-align: center;
+        align-items: center;
+    }
+
+    /*------------*/
+    /* Login Page */
+    /*------------*/
+
+    .login
+    {
+        width: 60%;
+    }
+
+    /*-------------------*/
+    /* Shared Components */
+    /*-------------------*/
+
+    header
+    {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .pages
+    {
+        margin-right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .pages ul
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .logo
+    {
+        height: 150px;
+    }
+}
+
+
+/*====================================================*/
+/*                     PHONES                          */
+/*====================================================*/
+@media (max-width: 768px)
+{
+    /*--------------*/
+    /* Landing Page */
+    /*--------------*/
+
+    .main
+    {
+        flex-direction: column;
+        gap: 40px;
+        padding: 30px;
+    }
+
+    .main-text,
+    .main-signUp
+    {
+        width: 90%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .main-text h1
+    {
+        font-size: 32px;
+    }
+
+    .main-text p
+    {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /*------------*/
+    /* Login Page */
+    /*------------*/
+
+    .login
+    {
+        width: 90%;
+        padding: 30px 15px;
+    }
+
+    /*----------------*/
+    /* Dashboard Page */
+    /*----------------*/
+
+    .welcome
+    {
+        position: static;
+        width: 90%;
+        margin: auto;
+        font-size: 28px;
+        text-align: center;
+    }
+
+    /*-------------------*/
+    /* Shared Components */
+    /*-------------------*/
+
+    header
+    {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .pages
+    {
+        margin-right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .pages ul
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .logo
+    {
+        height: 120px;
+    }
+}
+
+
+/*================================================*/
+/*                 SMALL PHONES                   */
+/*================================================*/
+@media (max-width: 480px)
+{
+    /*-------------*/
+    /* Landing Page */
+    /*-------------*/
+
+    .main
+    {
+        padding: 20px;
+    }
+
+    .main-text h1
+    {
+        font-size: 26px;
+    }
+
+    .main-text p
+    {
+        font-size: 15px;
+    }
+
+    /*------------*/
+    /* Login Page */
+    /*------------*/
+
+    .login
+    {
+        width: 95%;
+        padding: 25px 10px;
+    }
+
+    .login label
+    {
+        font-size: 22px;
+    }
+
+    /*----------------*/
+    /* Dashboard Page */
+    /*----------------*/
+
+    .welcome
+    {
+        font-size: 22px;
+    }
+
+    /*-------------------*/
+    /* Shared Components */
+    /*-------------------*/
+
+    .logo
+    {
+        height: 100px;
+    }
+
+    .pages ul
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
