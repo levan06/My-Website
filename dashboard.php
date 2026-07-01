@@ -10,13 +10,6 @@ if ( !isset( $_SESSION[ 'user_id' ] ) )
     exit();
 }
 
-/* Loging Out */
-if( isset( $_POST[ "logout" ] ) )
-{
-    header( 'Location : index.php' );
-    exit();
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +28,8 @@ if( isset( $_POST[ "logout" ] ) )
             ?>
         </p>
 
-        <form method="post" action="">
-            <button name="logout" id="btnLogout" type="submit">Log Out</button>
+        <form action="logout.php" method="post">
+            <button type="submit">Logout</button>
         </form>
 
     </body>
