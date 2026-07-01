@@ -1,25 +1,28 @@
 <?php
+/* Managing succefull sing up */
+$success = isset( $_GET[ "registered" ] );
+
 
 $errors = [];
 
 /* Chacking if the inputs are valid */
-if (isset($_POST["register"])) {
+if ( isset( $_POST["register"] ) ) {
 
     $name     = trim( $_POST[ "name"     ] ?? "" );
     $email    = trim( $_POST[ "email"    ] ?? "" );
     $password = trim( $_POST[ "password" ] ?? "" );
     $type     = trim( $_POST[ "type"     ] ?? "" );
 
-    if ($name === "") 
+    if ( $name === "" ) 
     {
         $errors[] = "Please Enter your name";
     }
 
-    if ($email === "") 
+    if ( $email === "" ) 
     {
         $errors[] = "Please Enter your email";
     } 
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+    elseif ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) ) 
     {
         $errors[] = "Invalid email!";
     }
@@ -37,14 +40,14 @@ if (isset($_POST["register"])) {
 /* Insert the data to dataBase */
 /*-----------------------------*/
 
-if ( isset($_POST["register"]) && empty($errors) )
+if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
 {
 
     /* Trying to connect to the DataBase */
-    $host        = "host="   . $_ENV["PGHOST"];
-    $port        = "port="   . $_ENV["PGPORT"];
-    $dbname      = "dbname=" . $_ENV["PGDATABASE"];
-    $credentials = " user="  . $_ENV["PGUSER"] . " password=" . $_ENV["PGPASSWORD"];
+    $host        = "host="   . $_ENV[ "PGHOST" ];
+    $port        = "port="   . $_ENV[ "PGPORT" ];
+    $dbname      = "dbname=" . $_ENV[ "PGDATABASE" ];
+    $credentials = " user="  . $_ENV[ "PGUSER" ] . " password=" . $_ENV[ "PGPASSWORD" ];
 
     $conn = pg_connect( "$host $port $dbname $credentials"  );
 
@@ -59,7 +62,7 @@ if ( isset($_POST["register"]) && empty($errors) )
         $mailResult   = pg_query_params( $conn, $sqlCheckMail, [$email] );
 
         // Is the query valid
-        if (!$mailResult)
+        if ( !$mailResult )
         {
             $errors[] = "Unable to check if the email exists.";
         }
@@ -72,7 +75,7 @@ if ( isset($_POST["register"]) && empty($errors) )
         else 
         {
             /* Hashing the user's password */
-            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
 
             /* Preparing the query */
             $sql = "INSERT INTO users (name, email, password, type)
@@ -82,12 +85,17 @@ if ( isset($_POST["register"]) && empty($errors) )
             $result = pg_query_params(
                 $conn,
                 $sql,
-                [$name, $email, $passwordHash, $type]
+                [ $name, $email, $passwordHash, $type ]
             );
 
             if (!$result)
             {
                 $errors[] = "Unable to create the account.";
+            }
+            else
+            {
+                header( "Location: index.php?registered=1" );
+                exit();
             }
         }
 
@@ -146,20 +154,21 @@ if ( isset($_POST["register"]) && empty($errors) )
                 <div class="main-signUp">
                     <form method="post" action="">
 
-                        <?php if( isset($_POST["register"]) ): ?>
+                        <?php if( isset( $_POST[ "register" ] ) ): ?>
                             <?php if( !empty( $errors ) ): ?>
                                 <div class="errors">
                                     <?php foreach( $errors as $error ): ?>
                                         <p><?= htmlspecialchars( $error ) ?></p>
                                     <?php endforeach ?>
                                 </div>
+                            <?php endif; ?>
 
-                            <?php else: ?>
+                            <?php if ($success): ?>
                                 <div class="valid">
-                                    <p><?= htmlspecialchars( "Registration Successful! Welcome to Abdo's Website." ) ?></p>
+                                    <p>Registration successful! You can now log in.</p>
                                 </div>
-                            <?php endif ?>
-                        <?php endif ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
 
                         <label>Sign Up For Free</label>
 
