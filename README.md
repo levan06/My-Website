@@ -74,3 +74,6 @@ Le projet inclut plusieurs mesures de sécurité :
 - Appliquer de bonnes pratiques de sécurité
 - Déployer une application web en production
 
+## Auteur
+
+Abdellah Achafik
