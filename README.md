@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="images/logo.png" alt="Logo My Website" width="180">
+</p>
 # My Website
 
 Application web développée en PHP avec PostgreSQL permettant la création de comptes utilisateurs, la connexion sécurisée et l'accès à un espace personnel.
