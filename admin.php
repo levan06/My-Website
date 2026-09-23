@@ -1,11 +1,30 @@
+<?php
+
+/* Verify if a sesion exist */
+/*   and compare its data   */
+require_once "includes/auth.php";
+
+if( !isset( $_SESSION[ 'is_admin' ] ) || $_SESSION['is_admin'] !== true )
+{
+    http_response_code(403);
+    die("Access Denied: You are not an admin.");
+}
+
+requireLogin();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link type="text/css" rel="stylesheet" href="styles/dashboard.css">
         <link type="text/css" rel="stylesheet" href="styles/media.css">
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+        <title>Dashboard</title>
     </head>
 
     <body>
@@ -39,8 +58,8 @@
         </header>
 
         <p class="welcome">
-            Welcome <span>Abdo</span> we are happy to have you ! 
-            <br>🤗
+            Welcome Back Admin ! 
+            <br>
         </p>
         </section>
 
