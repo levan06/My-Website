@@ -4,18 +4,18 @@ session_start();
 
 function requireGuest()
 {
-    if ( isset( $_SESSION[ "user_id" ] ) )
+    if ( isset( $_SESSION[ 'user_id' ] ) )
     {
-        header( "Location: dashboard.php" );
+        header( 'Location: dashboard.php' );
         exit();
     }
 }
 
 function requireLogin()
 {
-    if ( !isset( $_SESSION[ "user_id" ] ) )
+    if ( !isset( $_SESSION[ 'user_id' ] ) )
     {
-        header( "Location: login.php" );
+        header( 'Location: login.php' );
         exit();
     }
 }
