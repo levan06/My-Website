@@ -70,9 +70,10 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
             // Regenerate session ID to prevent session fixation attacks
             session_regenerate_id(true);
 
-            $_SESSION[ 'user_id' ] = $user[ "id"    ];
-            $_SESSION[ 'name'    ] = $user[ "name"  ];
-            $_SESSION[ 'email'   ] = $user[ "email" ];
+            $_SESSION[ 'user_id'  ] = $user[ 'id'       ];
+            $_SESSION[ 'name'     ] = $user[ 'name'     ];
+            $_SESSION[ 'email'    ] = $user[ 'email'    ];
+            $_SESSION[ 'is_admin' ] = $user[ 'is_admin' ];
 
             header( 'Location: dashboard.php' );
             exit();

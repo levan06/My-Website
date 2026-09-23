@@ -89,7 +89,7 @@ if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
         }
         else
         {
-            header( "Location: index.php?registered=1" );
+            header( "Location: dashboard.php" );
             exit();
         }
     }
