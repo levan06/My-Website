@@ -75,6 +75,12 @@ if( isset( $_POST[ "login" ] ) && empty( $logErrors ) )
             $_SESSION[ 'email'    ] = $user[ 'email'    ];
             $_SESSION[ 'is_admin' ] = $user[ 'is_admin' ];
 
+            if( isset( $_SESSION[ 'is_admin' ] ) )
+            {
+                header( 'Location: admin.php'  );
+                exit();
+            }
+
             header( 'Location: dashboard.php' );
             exit();
         } 
