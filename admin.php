@@ -4,7 +4,8 @@ require_once "includes/auth.php";
 
 requireLogin();
 
-if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+if ( !isset( $_SESSION['is_admin'] ) || $_SESSION['is_admin'] !== true )
+{
     http_response_code(403);
     die("Access Denied: You are not an admin.");
 }
@@ -21,18 +22,23 @@ $result = pg_query(
     "SELECT id, name, email, type, is_admin FROM users ORDER BY id DESC"
 );
 
-if ($result) {
-    while ($user = pg_fetch_assoc($result)) {
+if ($result) 
+{
+    while ($user = pg_fetch_assoc($result)) 
+    {
         $users[] = $user;
         $totalUsers++;
 
-        if ($user['is_admin'] === 't') {
+        if ($user['is_admin'] === 't') 
+        {
             $adminUsers++;
         }
     }
 
     pg_free_result($result);
-} else {
+} 
+else 
+{
     $databaseError = true;
 }
 
@@ -131,7 +137,7 @@ pg_close($conn);
                             </thead>
                             <tbody>
                                 <?php foreach ($users as $user): ?>
-                                    <?php $isUserAdmin = $user['is_admin'] === 't'; ?>
+                                    <?php $isUserAdmin = ( $user['is_admin'] === 't' ); ?>
                                     <tr>
                                         <td><strong><?= htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8') ?></strong></td>
                                         <td><?= htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8') ?></td>

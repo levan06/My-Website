@@ -4,9 +4,9 @@ require_once "includes/auth.php";
 
 requireLogin();
 
-$userName = htmlspecialchars($_SESSION['name'] ?? 'User', ENT_QUOTES, 'UTF-8');
-$userEmail = htmlspecialchars($_SESSION['email'] ?? '', ENT_QUOTES, 'UTF-8');
-$isAdmin = !empty($_SESSION['is_admin']);
+$userName  = htmlspecialchars( $_SESSION[ 'name'  ] ?? 'User', ENT_QUOTES, 'UTF-8');
+$userEmail = htmlspecialchars( $_SESSION[ 'email' ] ??     '', ENT_QUOTES, 'UTF-8');
+$isAdmin   = !empty($_SESSION['is_admin']);
 
 ?>
 
