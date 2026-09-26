@@ -2,82 +2,81 @@
   <img src="images/logo.png" alt="Logo My Website" width="220">
 </p>
 
-# My Website
+# Secure Authentication System
 
-Application web développée en PHP avec PostgreSQL permettant la création de comptes utilisateurs, la connexion sécurisée et l'accès à un espace personnel.
+A web application developed with PHP and PostgreSQL featuring secure user authentication, session management, and role-based access control.
 
-## Aperçu
-
-Ce projet a été réalisé dans le but de mettre en pratique le développement web côté serveur avec PHP ainsi que la gestion des utilisateurs et des sessions.
-
-Le site permet :
-
-- Création d'un compte utilisateur
-- Connexion sécurisée
-- Gestion des sessions
-- Déconnexion
-- Tableau de bord utilisateur
-- Validation des formulaires
-- Stockage sécurisé des mots de passe avec hashage
-- Base de données PostgreSQL
-
-## Démo en ligne
+## Live Demo
 
 🌐 https://my-website-production-bb28.up.railway.app
 
-## Technologies utilisées
+## Screenshots
+
+### Home Page
+
+<p align="center">
+  <img src="images/home-page.png" alt="Home Page" width="900">
+</p>
+
+Users can create an account, access the platform, and discover the application's features.
+
+---
+
+### User Dashboard
+
+<p align="center">
+  <img src="images/dashboard-user.png" alt="User Dashboard" width="900">
+</p>
+
+Authenticated users can access their personal dashboard and account information.
+
+---
+
+### Admin Dashboard
+
+<p align="center">
+  <img src="images/dashboard-admin.png" alt="Admin Dashboard" width="900">
+</p>
+
+Administrators can manage users, view platform statistics, and monitor account status.
+
+## Features
+
+- User Registration
+- Secure Login System
+- Session Management
+- Role-Based Access Control (User / Administrator)
+- User Dashboard
+- Admin Dashboard
+- Form Validation
+- Password Hashing
+- PostgreSQL Database Integration
+
+## Security Features
+
+- Password hashing using `password_hash()`
+- Password verification using `password_verify()`
+- Session regeneration with `session_regenerate_id()`
+- Input validation and sanitization
+- Prepared SQL statements
+- Secure authentication workflow
+
+## Technologies
 
 - PHP
 - PostgreSQL
 - HTML5
 - CSS3
-- Railway (hébergement)
+- Railway
 
-## Fonctionnalités
+## Project Goals
 
-### Inscription
+- Learn server-side web development with PHP
+- Manage PostgreSQL databases
+- Implement authentication systems
+- Apply web security best practices
+- Deploy a production-ready application
 
-Les utilisateurs peuvent créer un compte en renseignant :
-
-- Nom
-- Email
-- Mot de passe
-- Type de compte
-
-Les données sont validées avant l'enregistrement et les mots de passe sont stockés de manière sécurisée grâce au hashage.
-
-### Connexion
-
-Les utilisateurs peuvent se connecter à leur compte à l'aide de leur adresse email et de leur mot de passe.
-
-Le système vérifie :
-
-- La validité de l'email
-- L'existence du compte
-- La correspondance du mot de passe
-
-### Tableau de bord
-
-Après authentification, l'utilisateur accède à une page privée contenant ses informations et un message de bienvenue.
-
-### Sécurité
-
-Le projet inclut plusieurs mesures de sécurité :
-
-- Validation des entrées utilisateur
-- Requêtes paramétrées PostgreSQL
-- Hashage des mots de passe avec `password_hash()`
-- Vérification avec `password_verify()`
-- Protection contre la fixation de session avec `session_regenerate_id()`
-
-## Objectifs du projet
-
-- Comprendre l'authentification utilisateur
-- Manipuler PostgreSQL avec PHP
-- Gérer les sessions
-- Appliquer de bonnes pratiques de sécurité
-- Déployer une application web en production
-
-## Auteur
+## Author
 
 Abdellah Achafik
