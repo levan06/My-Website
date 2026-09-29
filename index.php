@@ -141,12 +141,13 @@ if ( isset( $_POST[ "register" ] ) && empty( $errors ) )
                     <h1>Don't be afraid to Think !</h1>
 
                     <p>
-                        “The world as we have created it is a process of our thinking. It cannot be changed 
-                        without changing our thinking.”
-                        <br>― <a href="https://en.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a>
+                        “The only true wisdom is in knowing you know nothing.”
+                        <br>― <a href="https://en.wikipedia.org/wiki/Socrates" target="_blank">Socrates</a>
                     </p>
 
-                    <button id="btnQuote">SEE QUOTES</button>
+                    <a href="https://analisis.medium.com/the-only-true-wisdom-is-in-knowing-you-know-nothing-a18dc3f7e133" target="_blank">
+                        <button id="btnQuote">READ ABOUT THE QUOTE</button>
+                    </a>
                 </div>
 
                 <!-- Sign Up Division -->

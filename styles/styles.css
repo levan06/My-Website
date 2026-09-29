@@ -107,6 +107,16 @@ input::placeholder {
     padding: 10px 30px 10px 30px;
     border: 2px solid rgb(84, 216, 84);
     border-radius: 20px;
+
+    transform: scale(1.1);
+    transition: .4s;
+}
+
+#btnQuote:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+
+    box-shadow: 5px 10px 10px black;
 }
 
 #btnRegister {
