@@ -1,37 +1,12 @@
-FROM php:8.1-apache
-
-# Install PHP extensions (adjust according to your needs)
+FROM php:8.1-cli
 
 RUN apt-get update && \
     apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo_pgsql pgsql
+    docker-php-ext-install pdo_pgsql pgsql && \
+    rm -rf /var/lib/apt/lists/*
 
-# Enable Apache modules
+WORKDIR /app
 
-RUN a2enmod rewrite headers
+COPY . .
 
-# Set working directory
-
-WORKDIR /var/www/html
-
-# Copy application files
-
-COPY . /var/www/html/
-
-# Set permissions
-
-RUN chown -R www-data:www-data /var/www/html
-
-# Expose port 80
-
-EXPOSE 80
-
-# Copy and setup entrypoint script (fixes MPM conflict on Railway)
-
-COPY docker-entrypoint.sh /usr/local/bin/
-
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-# Start Apache via custom entrypoint
-
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+CMD sh -c "php -S 0.0.0.0:${PORT}"
