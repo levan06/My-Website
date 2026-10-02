@@ -1,14 +1,12 @@
-FROM php:8.4-cli
+FROM php:8.4-apache
 
 RUN apt-get update && \
     apt-get install -y libpq-dev && \
     docker-php-ext-install pgsql pdo_pgsql && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+RUN a2enmod rewrite
 
-COPY . .
+COPY . /var/www/html
 
-EXPOSE 8080
-
-CMD ["php", "-S", "0.0.0.0:8080"]
+EXPOSE 80
