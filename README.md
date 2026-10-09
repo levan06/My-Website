@@ -8,7 +8,9 @@ A web application developed with PHP and PostgreSQL featuring secure user authen
 
 ## Live Demo
 
-🌐 https://my-website-production-bb28.up.railway.app
+🌐 <a href="[https://example.com](https://my-website-production-bb28.up.railway.app)" target="_blank">
+      My Website
+    </a>
 
 ## Screenshots
 
