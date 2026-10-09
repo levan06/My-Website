@@ -13,11 +13,13 @@
 
 A web application developed with PHP and PostgreSQL featuring secure user authentication, session management, and role-based access control.
 
+
 ## Live Demo
 
 🌐 <a href="https://my-website-production-bb28.up.railway.app" >
       My Website
     </a>
+
 
 ## Screenshots
 
@@ -49,6 +51,7 @@ Authenticated users can access their personal dashboard and account information.
 
 Administrators can manage users, view platform statistics, and monitor account status.
 
+
 ## Features
 
 - User Registration
@@ -61,6 +64,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - Password Hashing
 - PostgreSQL Database Integration
 
+
 ## Security Features
 
 - Password hashing using `password_hash()`
@@ -70,6 +74,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - Prepared SQL statements
 - Secure authentication workflow
 
+
 ## Technologies
 
 - PHP
@@ -78,6 +83,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - CSS3
 - Railway
 
+
 ## Project Goals
 
 - Learn server-side web development with PHP
@@ -85,6 +91,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - Implement authentication systems
 - Apply web security best practices
 - Deploy a production-ready application
+
 
 ## Author
 
