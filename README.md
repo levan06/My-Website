@@ -12,7 +12,7 @@
 </p>
 
 A web application developed with PHP and PostgreSQL featuring secure user authentication, session management, and role-based access control.
-
+<br><br>
 
 ## Live Demo
 
@@ -20,6 +20,7 @@ A web application developed with PHP and PostgreSQL featuring secure user authen
       My Website
     </a>
 
+<br>
 
 ## Screenshots
 
@@ -51,6 +52,7 @@ Authenticated users can access their personal dashboard and account information.
 
 Administrators can manage users, view platform statistics, and monitor account status.
 
+<br>
 
 ## Features
 
@@ -64,6 +66,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - Password Hashing
 - PostgreSQL Database Integration
 
+<br>
 
 ## Security Features
 
@@ -74,6 +77,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - Prepared SQL statements
 - Secure authentication workflow
 
+<br>
 
 ## Technologies
 
@@ -83,6 +87,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - CSS3
 - Railway
 
+<br>
 
 ## Project Goals
 
@@ -92,6 +97,7 @@ Administrators can manage users, view platform statistics, and monitor account s
 - Apply web security best practices
 - Deploy a production-ready application
 
+<br>
 
 ## Author
 
